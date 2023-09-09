@@ -1,22 +1,23 @@
 package eu.tutorials.a7_minutesworkoutapp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.widget.FrameLayout
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import eu.tutorials.a7_minutesworkoutapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val fLStartButton:FrameLayout = findViewById(R.id.flStart)
-        fLStartButton.setOnClickListener {
-            Toast.makeText(
-                this@MainActivity,
-                "Here we will start the exercise.",
-                Toast.LENGTH_SHORT
-            ).show()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding.apply {
+            setContentView(root)
+            flStart.setOnClickListener {
+                val intent = Intent(this@MainActivity, ExerciseActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }

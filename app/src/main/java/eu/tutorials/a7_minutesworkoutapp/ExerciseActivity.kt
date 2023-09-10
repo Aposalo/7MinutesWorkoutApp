@@ -3,6 +3,7 @@ package eu.tutorials.a7_minutesworkoutapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.View
 import android.widget.Toast
 import eu.tutorials.a7_minutesworkoutapp.databinding.ActivityExerciseBinding
 
@@ -10,9 +11,11 @@ class ExerciseActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityExerciseBinding
 
-    private lateinit var restTimer: CountDownTimer
-
+    private var restTimer: CountDownTimer = WorkoutTimer(11000)
     private var restProgress = 0
+
+    private var exerciseTimer: CountDownTimer = ExerciseTimer(31000)
+    private var exerciseProgress = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,25 +30,62 @@ class ExerciseActivity : AppCompatActivity() {
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
         }
+
         setRestProgressBar()
     }
 
-    private fun setupRestView() {
+    private fun stopRestTimer() {
         restTimer.cancel()
         restProgress = 0
     }
 
+    private fun stopExerciseTimer() {
+        exerciseTimer.cancel()
+        exerciseProgress = 0
+    }
+
     private fun setRestProgressBar() {
         binding.progressBar.progress = restProgress // Sets the current progress to the specified value.
-        restTimer = RestTimer().start()
+        restTimer = restTimer.start()
+    }
+
+    private fun setupExerciseView() {
+        stopRestTimer()
+        binding.flProgressBar.visibility = View.INVISIBLE
+        binding.tvTitle.text = getString(R.string.exercise_name)
+        binding.flExerciseView.visibility = View.VISIBLE
+        setExerciseProgressBar()
+    }
+
+    private fun setExerciseProgressBar() {
+        binding.progressBarExercise.progress = exerciseProgress
+        exerciseTimer = exerciseTimer.start()
     }
 
     public override fun onStop() {
-        setupRestView()
+        stopRestTimer()
+        stopExerciseTimer()
         super.onStop()
     }
 
-    inner class RestTimer : CountDownTimer(11000, 1000) {
+    inner class ExerciseTimer(millisInFuture: Long) : CountDownTimer(millisInFuture, 1000) {
+        override fun onTick(millisUntilFinished: Long) {
+            val newProgress = 30 - exerciseProgress
+            binding.progressBarExercise.progress = newProgress
+            binding.tvTimerExercise.text = newProgress.toString()
+            exerciseProgress++
+        }
+
+        override fun onFinish() {
+            Toast.makeText(
+                this@ExerciseActivity,
+                "This is 30 seconds completed so now we will add all the exercises.",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    inner class WorkoutTimer(millisInFuture: Long) : CountDownTimer(millisInFuture, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             val newProgress = 10 - restProgress
             binding.progressBar.progress = newProgress
@@ -54,12 +94,7 @@ class ExerciseActivity : AppCompatActivity() {
         }
 
         override fun onFinish() {
-            // When the 10 seconds will complete this will be executed.
-            Toast.makeText(
-                this@ExerciseActivity,
-                "Here now we will start the exercise.",
-                Toast.LENGTH_SHORT
-            ).show()
+            setupExerciseView()
         }
     }
 }

@@ -3,4 +3,5 @@
     <string name="image">image</string>
     <string name="timer_title">GET READY FOR</string>
     <string name="exercise_name">Exercise Name</string>
+    <string name="upcoming_action">Upcoming Action</string>
 </resources>

@@ -20,6 +20,8 @@ class ExerciseActivity : AppCompatActivity() {
     private lateinit var exerciseList : List<ExerciseModel>
     private var currentExercisePosition = 0
 
+    private lateinit var exerciseViewModel: ExerciseViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExerciseBinding.inflate(layoutInflater)
@@ -33,7 +35,8 @@ class ExerciseActivity : AppCompatActivity() {
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
         }
-        exerciseList = Constants.defaultExerciseList()
+        exerciseViewModel = ExerciseViewModel()
+        exerciseList = exerciseViewModel.defaultExerciseList()
         setRestProgressBar()
     }
 

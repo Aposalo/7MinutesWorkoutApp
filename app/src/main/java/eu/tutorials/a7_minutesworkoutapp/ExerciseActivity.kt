@@ -18,7 +18,7 @@ class ExerciseActivity : AppCompatActivity() {
     private var exerciseProgress = 0
 
     private lateinit var exerciseList : List<ExerciseModel>
-    private var currentExercisePosition = -1
+    private var currentExercisePosition = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,8 +54,8 @@ class ExerciseActivity : AppCompatActivity() {
         binding.tvExerciseName.visibility = View.INVISIBLE
         binding.flExerciseView.visibility = View.INVISIBLE
         binding.ivImage.visibility = View.INVISIBLE
-
-        binding.progressBar.progress = restProgress // Sets the current progress to the specified value.
+        binding.tvTitle.text = exerciseList[currentExercisePosition].exerciseTitle
+        binding.progressBar.progress = restProgress
         restTimer = restTimer.start()
     }
 
@@ -63,7 +63,6 @@ class ExerciseActivity : AppCompatActivity() {
         stopRestTimer()
         binding.flRestView.visibility = View.INVISIBLE
         binding.tvTitle.visibility = View.INVISIBLE
-        binding.tvTitle.text = getString(R.string.exercise_name)
         binding.tvExerciseName.visibility = View.VISIBLE
         binding.tvExerciseName.text = exerciseList[currentExercisePosition].name
         binding.flExerciseView.visibility = View.VISIBLE
@@ -92,11 +91,12 @@ class ExerciseActivity : AppCompatActivity() {
         }
 
         override fun onFinish() {
-            if(currentExercisePosition < exerciseList.size - 1){
+            if(currentExercisePosition < exerciseList.size){
                 stopExerciseTimer()
                 setRestProgressBar()
             }
-            else{
+            else
+            {
                 Toast.makeText(
                     this@ExerciseActivity,
                     "Congratulations for finishing the exercise.",
@@ -116,8 +116,8 @@ class ExerciseActivity : AppCompatActivity() {
         }
 
         override fun onFinish() {
-            currentExercisePosition++
             setupExerciseView()
+            currentExercisePosition++
         }
     }
 }

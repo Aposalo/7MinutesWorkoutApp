@@ -12,6 +12,7 @@ private const val HIGH_KNEES_RUNNING_IN_PLACE = "High Knees Running In Place"
 private const val LUNGES = "Lunges"
 private const val PUSH_UP_AND_ROTATION = "Push up and Rotation"
 private const val SIDE_PLANK = "Side Plank"
+const val GET_READY_FOR = "GET READY FOR"
 
 object Constants {
 

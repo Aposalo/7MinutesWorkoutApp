@@ -70,6 +70,34 @@
 
         </LinearLayout>
     </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tvUpcomingExerciseLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/upcoming_action"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/fl_rest_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvUpcomingExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exercise_name"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvUpcomingExerciseLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
@@ -86,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/exercise_name"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
         android:visibility="gone"

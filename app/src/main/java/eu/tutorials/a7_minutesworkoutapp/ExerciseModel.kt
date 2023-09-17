@@ -4,7 +4,4 @@ data class ExerciseModel(val id: Int,
                          val name: String,
                          val image: Int,
                          val isCompleted: Boolean = false,
-                         val isSelected: Boolean = false){
-
-    val exerciseTitle = "$GET_READY_FOR $name"
-}
+                         val isSelected: Boolean = false)

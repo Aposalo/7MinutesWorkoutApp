@@ -1,14 +1,13 @@
-package eu.tutorials.a7_minutesworkoutapp
+package eu.tutorials.a7_minutesworkoutapp.utils
 
 import android.content.Context
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import java.util.Locale
 
-class SpeekText(context: Context): TextToSpeech.OnInitListener {
+class SpeakText(context: Context): TextToSpeech.OnInitListener {
 
     private var tts = TextToSpeech(context, this)
-
 
     fun speakOut(text: String) {
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")

@@ -1,4 +1,4 @@
-package eu.tutorials.a7_minutesworkoutapp
+package eu.tutorials.a7_minutesworkoutapp.model
 
 data class ExerciseModel(val id: Int,
                          val name: String,

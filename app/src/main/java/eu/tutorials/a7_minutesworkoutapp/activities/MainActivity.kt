@@ -1,4 +1,4 @@
-package eu.tutorials.a7_minutesworkoutapp
+package eu.tutorials.a7_minutesworkoutapp.activities
 
 import android.content.Intent
 import android.os.Bundle

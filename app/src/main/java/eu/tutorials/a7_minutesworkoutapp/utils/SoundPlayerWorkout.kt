@@ -1,8 +1,9 @@
-package eu.tutorials.a7_minutesworkoutapp
+package eu.tutorials.a7_minutesworkoutapp.utils
 
 import android.content.Context
 import android.media.MediaPlayer
 import android.net.Uri
+import eu.tutorials.a7_minutesworkoutapp.R
 import java.lang.Exception
 
 class SoundPlayerWorkout(applicationContext: Context) {

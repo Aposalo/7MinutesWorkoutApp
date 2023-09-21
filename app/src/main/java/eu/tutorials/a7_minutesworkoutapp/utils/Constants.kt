@@ -1,4 +1,4 @@
-package eu.tutorials.a7_minutesworkoutapp
+package eu.tutorials.a7_minutesworkoutapp.utils
 
 const val JUMPING_JACKS = "Jumping Jacks"
 const val WALL_SIT = "Wall Sit"

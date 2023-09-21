@@ -1,14 +1,18 @@
-package eu.tutorials.a7_minutesworkoutapp
+package eu.tutorials.a7_minutesworkoutapp.activities
 
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import eu.tutorials.a7_minutesworkoutapp.model.ExerciseModel
+import eu.tutorials.a7_minutesworkoutapp.model.ExerciseViewModel
 import eu.tutorials.a7_minutesworkoutapp.databinding.ActivityExerciseBinding
+import eu.tutorials.a7_minutesworkoutapp.utils.SoundPlayerWorkout
+import eu.tutorials.a7_minutesworkoutapp.utils.SpeakText
 
 class ExerciseActivity : AppCompatActivity() {
 
-    private lateinit var speech : SpeekText
+    private lateinit var speech : SpeakText
 
     private lateinit var binding : ActivityExerciseBinding
 
@@ -38,7 +42,7 @@ class ExerciseActivity : AppCompatActivity() {
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
         }
-        speech = SpeekText(this)
+        speech = SpeakText(this)
         soundPlayer = SoundPlayerWorkout(this)
         exerciseViewModel = ExerciseViewModel()
         exerciseList = exerciseViewModel.defaultExerciseList()
